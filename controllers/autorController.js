@@ -21,7 +21,7 @@ exports.createForm = (req, res) => {
     });
 };
 
-exports.createAutor = async (req, res) => {
+exports.create = async (req, res) => {
     try {
         const { nombre, correo } = req.body;
         await autor.create({ nombre, correo });
@@ -39,7 +39,7 @@ exports.createAutor = async (req, res) => {
 exports.editForm = async (req, res) => {
     try {
         const autorId = req.params.id;
-        const autor = await autor.findByPk(autorId);
+        const autorRecord = await autor.findByPk(autorId);
 
         if (!autor) {
             return res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente mas tarde." });
@@ -47,7 +47,7 @@ exports.editForm = async (req, res) => {
 
         res.render("autores/autores-edit", { 
             pageTitle: "Editar Autor", 
-            autor: autor.dataValues 
+            autor: autorRecord.dataValues
         });
 
     } catch (error) {
@@ -57,7 +57,7 @@ exports.editForm = async (req, res) => {
     }
 };
 
-exports.editAutor = async (req, res) => {
+exports.edit = async (req, res) => {
     try {
         const autorId = req.params.id;
         const { nombre, correo } = req.body;
@@ -73,7 +73,7 @@ exports.editAutor = async (req, res) => {
     }
 };
 
-exports.deleteAutor = async (req, res) => {
+exports.delete = async (req, res) => {
     try {
         const autorId = req.params.id;
 

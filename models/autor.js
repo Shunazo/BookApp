@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
 const connection = require("../database/appContext");
-const Libro = require("./libro");
 
 const Autor = connection.define("autor", {
     id: {
@@ -19,7 +18,6 @@ const Autor = connection.define("autor", {
     },
 });
 
-Autor.hasMany(Libro, { foreignKey: "autorId", onDelete: 'CASCADE' });
-Libro.belongsTo(Autor, { foreignKey: "autorId", onDelete: 'CASCADE' });
+
 
 module.exports = Autor;

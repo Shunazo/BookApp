@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="../../assets/css/style.css">
+<div class="row align-items-center">
+    <div class="col-12 col-sm-6 offset-sm-3">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-white text-center">{{pageTitle}}</h1>
+                <br>
+                <form method="POST" action="/categorias/edit/{{categoria.id}}" novalidate>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label text-white">Nombre de la Categoría</label>
+                        <input type="text" class="form-control text-info" id="nombre" name="nombre" value="{{categoria.nombre}}" required />
+                    </div>
+        
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label text-white">Descripcion</label>
+                        <input type="textarea" class="form-control text-info" id="descripcion" name="descripcion" value="{{categoria.descripcion}}" required />
+                    </div>
+        
+                    <button type="submit" class="btn btn-info float-end" onclick="confirmCreateOrEdit(this, event)">
+                        <i class="bi bi-check"></i> Guardar</button>
+                    <a href="/categorias" class="btn btn-secondary float-end me-2">
+                        <i class="bi bi-x"></i> Volver a la lista</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../assets/js/index.js"></script>

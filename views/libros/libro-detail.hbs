@@ -1,0 +1,27 @@
+<div class="card mb-3">
+  <div class="card-body">
+    <h1 class="text-primary">{{pageTitle}}</h1>
+
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <img src="{{libro.imagePath}}" alt="Portada de {{libro.titulo}}" class="img-fluid" />
+      </div>
+
+      <div class="col-12 col-md-6">
+        <h2>{{libro.titulo}}</h2>
+        <h6 class="text-muted">Publicado: {{libro.fechaPublicacion}}</h6>
+        <h6 class="text-muted">Categoría: {{libro.categoria.nombre}}</h6>
+        <h6 class="text-muted">Autor: {{libro.autor.nombre}}</h6>
+        <h6 class="text-muted">Editorial: {{libro.editorial.nombre}}</h6>
+        <h6 class="text-muted">Pais: {{libro.editorial.pais}}
+        <h6 class="text-muted">Telefono de la editorial: {{libro.editorial.telefono}}</h6>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <a href="/" class="btn btn-secondary">Volver al Home</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,7 +22,7 @@ exports.createForm = (req, res) => {
     });
 };
 
-exports.createCategoria = async (req, res) => {
+exports.create = async (req, res) => {
     try {
         const { nombre, descripcion } = req.body;
         await categoria.create({ nombre, descripcion });
@@ -38,7 +38,7 @@ exports.createCategoria = async (req, res) => {
 exports.editForm = async (req, res) => {
     try {
         const categoriaId = req.params.id;
-        const categoria = await categoria.findByPk(categoriaId);
+        const categoriaRecord = await categoria.findByPk(categoriaId);
 
         if (!categoria) {
             return res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente mas tarde." });
@@ -46,7 +46,7 @@ exports.editForm = async (req, res) => {
 
         res.render("categorias/categorias-edit", { 
             pageTitle: "Editar Categoria", 
-            categoria: categoria.dataValues 
+            categoria: categoriaRecord.dataValues 
         });
 
     } catch (error) {
@@ -56,7 +56,7 @@ exports.editForm = async (req, res) => {
     }
 };
 
-exports.editCategoria = async (req, res) => {
+exports.edit = async (req, res) => {
     try {
         const categoriaId = req.params.id;
         const { nombre, descripcion } = req.body;
@@ -72,7 +72,7 @@ exports.editCategoria = async (req, res) => {
     }
 };
 
-exports.deleteCategoria = async (req, res) => {
+exports.delete = async (req, res) => {
     try {
         const categoriaId = req.params.id;
 

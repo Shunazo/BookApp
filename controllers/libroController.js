@@ -27,6 +27,27 @@ exports.libros = async (req, res) => {
     }
 };
 
+exports.librodetail = async (req, res) => {
+    try{
+      const libroId = req.params.id;
+      const libro = await libro.findByPk(libroId, {
+        include: [{ model: autor }, { model: categoria }, { model: editorial }],
+      });
+  
+      if (!libro) {
+        return res.render("404", { pageTitle: "Libro no encontrado." });
+      }
+  
+      res.render("libros/libro-detail", { 
+          pageTitle: "Detalle de Libro", 
+          libro: libro.dataValues 
+      });
+    } catch (error) {
+      console.log(error);
+      res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente mas tarde." });
+    }
+  };
+
 exports.createForm = async (req, res) => {
     try {
 
@@ -66,7 +87,7 @@ exports.createForm = async (req, res) => {
     }
 };
 
-exports.createLibro = async (req, res) => {
+exports.create = async (req, res) => {
     try {
         const { titulo, fechaPublicacion, autorId, categoriaId, editorialId } = req.body;
         const imagePath = "/" + req.file.path;
@@ -103,7 +124,7 @@ exports.createLibro = async (req, res) => {
 exports.editForm = async (req, res) => {
     try {
         const libroId = req.params.id;
-        const libro = await libro.findByPk(libroId);
+        const libroRecord = await libro.findByPk(libroId);
 
         if (!libro) {
             return res.render("404", { pageTitle: "Libro no encontrado." });
@@ -117,7 +138,7 @@ exports.editForm = async (req, res) => {
 
         res.render("libros/libros-edit", { 
             pageTitle: "Editar Libro", 
-            libro: libro.dataValues, 
+            libro: libroRecord.dataValues, 
             autores: autores.map(a => a.dataValues),
             categorias: categorias.map(c => c.dataValues),
             editoriales: editoriales.map(e => e.dataValues)
@@ -129,7 +150,7 @@ exports.editForm = async (req, res) => {
     }
 };
 
-exports.editLibro = async (req, res) => {
+exports.edit = async (req, res) => {
     try {
         const libroId = req.params.id;
         const { titulo, fechaPublicacion, autorId, categoriaId, editorialId } = req.body;
@@ -171,7 +192,7 @@ exports.editLibro = async (req, res) => {
     }   
 };
 
-exports.deleteLibro = async (req, res) => {
+exports.delete = async (req, res) => {
     try {
         const libroId = req.params.id;
         const libro = await libro.findByPk(libroId);

@@ -2,7 +2,7 @@
 
   <div class="card-body">
 
-    <h1 class="text-primary ">{{pageTitle}}</h1>
+    <h1 class="text-white ">{{pageTitle}}</h1>
 
 <div class="row">
  
@@ -44,8 +44,9 @@
         <img src="{{this.imagePath}}" class="card-img-top img-size" alt="{{this.titulo}}" />
         <div class="card-body">
           <h5 class="card-title text-muted text-center">{{this.titulo}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted text-center">Tipo: {{this.autor.nombre}}</h6>  
+          <h6 class="card-subtitle mb-2 text-muted text-center">Región: {{this.fechaPublicacion}}</h6>
           <h6 class="card-subtitle mb-2 text-muted text-center">Región: {{this.categoria.nombre}}</h6> 
+          <h6 class="card-subtitle mb-2 text-muted text-center">Tipo: {{this.autor.nombre}}</h6>  
           <h6 class="card-subtitle mb-2 text-muted text-center">Editorial: {{this.editorial.nombre}}</h6>
           <a href="/libros/{{this.id}}" class="btn btn-info w-100">Detalles</a>
         </div>

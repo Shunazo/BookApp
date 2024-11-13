@@ -22,7 +22,7 @@ exports.createForm = (req, res) => {
     });
 };
 
-exports.createEditorial = async (req, res) => {
+exports.create = async (req, res) => {
     try {
         const { nombre, telefono, pais } = req.body;
         await editorial.create({ nombre, telefono, pais });
@@ -38,7 +38,7 @@ exports.createEditorial = async (req, res) => {
 exports.editForm = async (req, res) => {
     try {
         const editorialId = req.params.id;
-        const editorial = await editorial.findByPk(editorialId);
+        const editorialRecord = await editorial.findByPk(editorialId);
 
         if (!editorial) {
             return res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente mas tarde." });
@@ -46,7 +46,7 @@ exports.editForm = async (req, res) => {
 
         res.render("editoriales/editoriales-edit", {
             pageTitle: "Editar Editorial",
-            editorial: editorial.dataValues
+            editorial: editorialRecord.dataValues
         }); 
 
     } catch (error) {
@@ -56,7 +56,7 @@ exports.editForm = async (req, res) => {
     }
 };
     
-exports.editEditorial = async (req, res) => {
+exports.edit = async (req, res) => {
     try {
         const editorialId = req.params.id;
         const { nombre, telefono, pais } = req.body;
@@ -72,7 +72,7 @@ exports.editEditorial = async (req, res) => {
     }
 };
 
-exports.deleteEditorial = async (req, res) => {
+exports.delete = async (req, res) => {
     try {
         const editorialId = req.params.id;
 

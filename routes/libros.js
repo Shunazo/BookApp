@@ -3,11 +3,12 @@ const router = express.Router();
 const libroController = require("../controllers/libroController");
 
 router.get("/", libroController.libros);
+router.get("/:id", libroController.librodetail);
 router.get("/create", libroController.createForm);
-router.post("/create", libroController.createLibro);
+router.post("/create", libroController.create);
 router.get("/edit/:id", libroController.editForm);
-router.post("/edit/:id", libroController.editLibro);
-router.get("/delete/:id", libroController.deleteLibro);
+router.post("/edit/:id", libroController.edit);
+router.post("/delete/:id", libroController.delete);
 
 module.exports = router;
 

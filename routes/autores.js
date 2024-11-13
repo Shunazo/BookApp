@@ -4,9 +4,9 @@ const autorController = require("../controllers/autorController");
 
 router.get("/", autorController.autores);
 router.get("/create", autorController.createForm);
-router.post("/create", autorController.createAutor);
+router.post("/create", autorController.create);
 router.get("/edit/:id", autorController.editForm);
-router.post("/edit/:id", autorController.editAutor);
-router.get("/delete/:id", autorController.deleteAutor);
+router.post("/edit/:id", autorController.edit);
+router.post("/delete/:id", autorController.delete);
 
 module.exports = router;

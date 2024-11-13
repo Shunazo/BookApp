@@ -1,0 +1,27 @@
+<div class="row align-items-center">
+    <div class="col-12 col-sm-6 offset-sm-3">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-info text-center">{{pageTitle}}</h1>
+                <br>
+                <form method="POST" action="/autores/create" novalidate>
+                   
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label text-muted">Nombre del Autor</label>
+                        <input type="text" class="form-control text-info" id="nombre" name="nombre" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="correo" class="form-label text-muted">Correo</label>
+                        <input type="email" class="form-control text-info" id="correo" name="correo" required />
+                    </div>
+        
+                    <button type="submit" class="btn btn-info float-end" onclick="confirmCreateOrEdit(this, event)">
+                        <i class="bi bi-check"></i> Guardar</button>
+                    <a href="/autores" class="btn btn-secondary float-end me-2">
+                        <i class="bi bi-x"></i>Volver a la lista</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
