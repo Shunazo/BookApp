@@ -32,6 +32,7 @@ app.engine(
 app.set("view engine", "hbs");
 app.set("views", "views");
 
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/images", express.static(path.join(__dirname, "images")));
@@ -57,9 +58,9 @@ Libro.belongsTo(Categoria, { foreignKey: "categoriaId" });
 Libro.belongsTo(Editorial, { foreignKey: "editorialId" });
 
 app.use("/", homeRoute);
+app.use("/libros", librosRoute);
 app.use("/categorias", categoriaRoute);
 app.use("/editoriales", editorialesRoute);
-app.use("/libros", librosRoute);
 app.use("/autores", autoresRoute);
 app.use(errorController.get404);
 

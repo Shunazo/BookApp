@@ -2,6 +2,7 @@ const libro = require("../models/libro");
 const autor = require("../models/autor");
 const categoria = require("../models/categoria");
 const editorial = require("../models/editorial");
+const transporter = require("../services/EmailService");
 
 exports.libros = async (req, res) => {
     try {
@@ -29,7 +30,7 @@ exports.libros = async (req, res) => {
 
 exports.createForm = async (req, res) => {
     try {
-
+        console.log("Accessing create form..."); 
         const [autores, categorias, editoriales] = await Promise.all([
             autor.findAll(),
             categoria.findAll(),
@@ -104,7 +105,7 @@ exports.editForm = async (req, res) => {
         const libroId = req.params.id;
         const libroRecord = await libro.findByPk(libroId);
 
-        if (!libro) {
+        if (!libroRecord) {
             return res.render("404", { pageTitle: "Libro no encontrado." });
         }
 
