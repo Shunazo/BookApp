@@ -26,7 +26,7 @@ exports.getIndex = async(req, res) => {
       );
     }
     
-    res.render("home", {
+    res.render("home/home", {
         pageTitle: "Home",
         libros: filteredLibros,
         hasLibros: filteredLibros.length > 0,

@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
 const connection = require("../database/appContext");
+const Libro = require("./libro");
 
 const Autor = connection.define("autor", {
     id: {
