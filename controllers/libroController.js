@@ -27,27 +27,6 @@ exports.libros = async (req, res) => {
     }
 };
 
-exports.librodetail = async (req, res) => {
-    try{
-      const libroId = req.params.id;
-      const libro = await libro.findByPk(libroId, {
-        include: [{ model: autor }, { model: categoria }, { model: editorial }],
-      });
-  
-      if (!libro) {
-        return res.render("404", { pageTitle: "Libro no encontrado." });
-      }
-  
-      res.render("libros/libro-detail", { 
-          pageTitle: "Detalle de Libro", 
-          libro: libro.dataValues 
-      });
-    } catch (error) {
-      console.log(error);
-      res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente mas tarde." });
-    }
-  };
-
 exports.createForm = async (req, res) => {
     try {
 
@@ -72,7 +51,6 @@ exports.createForm = async (req, res) => {
                 { pageTitle: "No se encontraron editoriales, debe crearlos primero."});
         }
 
-    
         res.render("libros/libros-create", { 
             pageTitle: "Crear Libro", 
             autores: autores.map(a => a.dataValues),
@@ -161,9 +139,9 @@ exports.edit = async (req, res) => {
             return res.render("404", { pageTitle: "La imagen es obligatoria." });
         }
         
-        const libro = await libro.findByPk(libroId);
+        const libroRecord = await libro.findByPk(libroId);
         
-        if (!libro) {
+        if (!libroRecord) {
             return res.render("404", { pageTitle: "Libro no encontrado." });
         }
         
@@ -208,3 +186,24 @@ exports.delete = async (req, res) => {
         res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente más tarde." });
     }   
 };
+
+exports.librodetail = async (req, res) => {
+    try{
+      const libroId = req.params.id;
+      const libroRecord = await libro.findByPk(libroId, {
+        include: [{ model: autor }, { model: categoria }, { model: editorial }],
+      });
+  
+      if (!libroRecord) {
+        return res.render("404", { pageTitle: "Libro no encontrado." });
+      }
+  
+      res.render("libros/libro-detail", { 
+          pageTitle: "Detalle de Libro", 
+          libro: libroRecord.dataValues 
+      });
+    } catch (error) {
+      console.log(error);
+      res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente mas tarde." });
+    }
+  };

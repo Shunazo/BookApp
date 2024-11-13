@@ -1,0 +1,31 @@
+<div class="row align-items-center">
+    <div class="col-12 col-sm-6 offset-sm-3">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="text-white text-center">{{pageTitle}}</h1>
+                <br>
+                <form method="POST" action="/libros/create" novalidate>
+                    <div class="mb-3">
+                        <label for="titulo" class="form-label text-white">Titulo</label>
+                        <input type="text" class="form-control text-info" id="titulo" name="titulo" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="autor" class="form-label text-white">Autor</label>
+                        <input type="text" class="form-control text-info" id="autor" name="autor" required />
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="imagen" class="form-label text-white">URL de la Imagen</label>
+                        <input type="text" class="form-control text-info" id="imagen" name="imagen" required />
+                    </div>
+
+                    <button type="submit" class="btn btn-info float-end" onclick="confirmCreateOrEdit(this, event)"> 
+                        <i class="bi bi-check"></i> Guardar</button>
+                    <a href="/libros" class="btn btn-secondary float-end me-2">
+                        <i class="bi bi-x"></i>Volver a la lista</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
