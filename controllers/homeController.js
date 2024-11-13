@@ -40,5 +40,23 @@ exports.getIndex = async(req, res) => {
   }
 };
 
+exports.librodetail = async (req, res) => {
+  try{
+    const libroId = req.params.id;
+    const libro = await libro.findByPk(libroId, {
+      include: [{ model: autor }, { model: categoria }, { model: editorial }],
+    });
 
-//agregar libro detail despues
+    if (!libro) {
+      return res.render("404", { pageTitle: "Libro no encontrado." });
+    }
+
+    res.render("libros/libro-detail", { 
+        pageTitle: "Detalle de Libro", 
+        libro: libro.dataValues 
+    });
+  } catch (error) {
+    console.log(error);
+    res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente mas tarde." });
+  }
+};
