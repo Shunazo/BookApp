@@ -3,11 +3,10 @@ const categoria = require("../models/categoria");
 exports.categorias = async (req, res) => {
     try {
         const categorias = await categoria.findAll();
-        const categoriasList = categorias.map((categoria) => categoria.dataValues);
 
         res.render("categorias/categorias", { 
             pageTitle: "Lista de Categorias", 
-            categorias: categoriasList 
+            categorias: categorias.map(c => c.dataValues)
         });
 
     } catch (error) {    

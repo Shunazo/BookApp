@@ -3,10 +3,10 @@ const autor = require("../models/autor");
 exports.autores = async (req, res) => {
     try {
         const autores = await autor.findAll();
-        const autoresList = autores.map((autor) => autor.dataValues);
+        
         res.render("autores/autores", { 
             pageTitle: "Lista de Autores", 
-            autores: autoresList 
+            autores: autores.map(a => a.dataValues)
         });
     } catch (error) {
         res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente mas tarde." 

@@ -16,7 +16,7 @@ const Libro = connection.define("libro", {
         type: Sequelize.STRING,
         allowNull: false,
     },
-    fecha: {
+    fechaPublicacion: {
         type: Sequelize.DOUBLE,
         allowNull: false,
     },
