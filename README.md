@@ -1,1 +1,1 @@
-placeholder, will change later 
+Library themed project in progress.
