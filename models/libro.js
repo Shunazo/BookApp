@@ -1,3 +1,4 @@
+// models/libro.js
 const Sequelize = require("sequelize");
 const connection = require("../database/appContext");
 
@@ -34,5 +35,22 @@ const Libro = connection.define("libro", {
     },
 });
 
-
+// Adding associations with alias
+Libro.associate = (models) => {
+    Libro.belongsTo(models.Autor, { 
+        foreignKey: "autorId", 
+        onDelete: 'CASCADE',
+        as: 'autor', // Alias for this association
+    });
+    Libro.belongsTo(models.Categoria, {
+        foreignKey: "categoriaId",
+        onDelete: 'CASCADE',
+        as: 'categoria', // Alias for this association
+    });
+    Libro.belongsTo(models.Editorial, {
+        foreignKey: "editorialId",
+        onDelete: 'CASCADE',
+        as: 'editorial', // Alias for this association
+    });    
+};
 module.exports = Libro;

@@ -48,15 +48,12 @@ const imageStorage = multer.diskStorage({
     },
 });
 
-app.use(multer({ storage: imageStorage }).single('Image'));
+app.use(multer({ storage: imageStorage }).single('imagePath'));
 
-Autor.hasMany(Libro, { foreignKey: "autorId", onDelete: 'CASCADE' });
-Categoria.hasMany(Libro, { foreignKey: "categoriaId", onDelete: 'CASCADE' });
-Editorial.hasMany(Libro, { foreignKey: "editorialId", onDelete: 'CASCADE' });
-
-Libro.belongsTo(Autor, { foreignKey: "autorId" });
-Libro.belongsTo(Categoria, { foreignKey: "categoriaId" });
-Libro.belongsTo(Editorial, { foreignKey: "editorialId" });
+Libro.associate({ Autor, Categoria, Editorial });
+Autor.associate({ Libro });
+Categoria.associate({ Libro });
+Editorial.associate({ Libro });
 
 app.use("/", homeRoute);
 app.use("/libros", librosRoute);

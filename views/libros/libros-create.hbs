@@ -4,26 +4,56 @@
             <div class="card-body">
                 <h1 class="text-white text-center">{{pageTitle}}</h1>
                 <br>
-                <form method="POST" action="/libros/create" novalidate>
+                <form enctype="multipart/form-data" method="POST" action="/libros/create" novalidate>
                     <div class="mb-3">
-                        <label for="titulo" class="form-label text-white">Titulo</label>
+                        <label for="titulo" class="form-label text-white">Titulo del Libro</label>
                         <input type="text" class="form-control text-dark" id="titulo" name="titulo" required />
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="image-file" class="form-label text-white">Selecciona una imagen</label>
+                        <input type="file" class="form-control text-dark" id="image-file" name="imagePath" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fechaPublicacion" class="form-label text-white">Fecha de Publicacion</label>
+                        <input type="number" class="form-control text-dark" id="fechaPublicacion" name="fechaPublicacion" required/>
                     </div>
 
                     <div class="mb-3">
                         <label for="autor" class="form-label text-white">Autor</label>
-                        <input type="text" class="form-control text-dark" id="autor" name="autor" required />
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="imagen" class="form-label text-white">URL de la Imagen</label>
-                        <input type="text" class="form-control text-info" id="imagen" name="imagen" required />
+                        <select class="form-select text-dark" id="autor" name="autorId" required>
+                            <option value="" selected disabled>Selecciona un Autor</option>
+                            {{#each autores}}
+                                <option value="{{this.id}}">{{this.nombre}}</option>
+                            {{/each}}
+                        </select>
                     </div>
 
-                    <button type="submit" class="btn btn-info float-end" onclick="confirmCreateOrEdit(this, event)"> 
+                    <div class="mb-3">  
+                        <label for="categoria" class="form-label text-white">Categoria</label>
+                        <select class="form-select text-dark" id="categoria" name="categoriaId" required>
+                            <option value="" selected disabled>Selecciona una Categoria</option>
+                            {{#each categorias}}
+                                <option value="{{this.id}}">{{this.nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="editorial" class="form-label text-white">Editorial</label>
+                        <select class="form-select text-dark" id="editorial" name="editorialId" required>
+                            <option value="" selected disabled>Selecciona una Editorial</option>
+                            {{#each editoriales}}
+                                <option value="{{this.id}}">{{this.nombre}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-general float-end" onclick="confirmCreateOrEdit(this, event)"> 
                         <i class="bi bi-check"></i> Guardar</button>
-                    <a href="/libros" class="btn btn-secondary float-end me-2">
-                        <i class="bi bi-x"></i>Volver a la lista</a>
+                    <a href="/libros" class="btn btn-general2 float-end me-2">
+                        <i class="bi bi-x"></i> Volver a la lista</a>
                 </form>
             </div>
         </div>

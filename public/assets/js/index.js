@@ -81,7 +81,7 @@ function confirmDelete(button) {
   }
   
   function validarCampos(form) {
-    const inputs = form.querySelectorAll('input, select');
+    const inputs = form.querySelectorAll('input[required], select[required]'); // Only select required fields
     let esValido = true;
   
     inputs.forEach(input => {
@@ -105,7 +105,8 @@ function confirmDelete(button) {
     }
   
     return esValido;
-  }
+}
+
   
 
   function formatPhoneNumber(input) {
@@ -120,3 +121,18 @@ function confirmDelete(button) {
     }
     input.value = value; 
   }
+
+
+function limitToFourDigits(inputId) {
+    const inputElement = document.getElementById(inputId);
+  
+    inputElement.addEventListener('input', function (e) {
+      const value = e.target.value;
+      if (value.length > 4) {
+        e.target.value = value.slice(0, 4);  
+      }
+    });
+  }
+  
+  limitToFourDigits('fechaPublicacion');
+  

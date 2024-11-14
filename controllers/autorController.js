@@ -1,16 +1,23 @@
 const autor = require("../models/autor");
-
+const libro = require("../models/libro");
 exports.autores = async (req, res) => {
     try {
-        const autores = await autor.findAll();
-        
+        const autores = await autor.findAll({
+            include: {
+                model: libro, 
+                as: 'libros'  
+            }
+        });
+
         res.render("autores/autores", { 
             pageTitle: "Lista de Autores", 
-            autores: autores.map(a => a.dataValues)
+            autores: autores.map(a => ({
+                ...a.dataValues,
+                librosCount: a.libros ? a.libros.length : 0  
+            }))
         });
     } catch (error) {
-        res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente mas tarde." 
-        });
+        res.render("404", { pageTitle: "Se produjo un error, vuelva al home o intente mas tarde." });
         console.log(error);
     }
 };

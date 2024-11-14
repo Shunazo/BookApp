@@ -24,9 +24,10 @@ body {
 .card .card-img-top,
 .card img {
   width: 100%;
-  height: auto;
-  
+  height: auto; /* Set a fixed height */
+  object-fit: cover; /* Ensures images cover the space without distorting */
 }
+
 
 .input-error{
     border-color: red;
@@ -72,3 +73,10 @@ body {
   .btn-general2:hover{
     background-color :#fabad6
   }
+
+/* Custom width for select2 if needed */
+.js-example-basic-multiple {
+    max-width: 20px; /* Adjust as needed */
+    width: 100%; /* Ensure it respects the width of the container */
+  }
+  

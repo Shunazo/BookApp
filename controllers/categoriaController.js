@@ -1,12 +1,20 @@
 const categoria = require("../models/categoria");
-
+const libro = require("../models/libro");
 exports.categorias = async (req, res) => {
     try {
-        const categorias = await categoria.findAll();
+        const categorias = await categoria.findAll({
+            include: {
+                model: libro, 
+                as: 'libros' 
+            }
+        });
 
         res.render("categorias/categorias", { 
             pageTitle: "Lista de Categorias", 
-            categorias: categorias.map(c => c.dataValues)
+            categorias: categorias.map(c => ({
+                ...c.dataValues,
+                librosCount: c.libros ? c.libros.length : 0  
+            }))
         });
 
     } catch (error) {    

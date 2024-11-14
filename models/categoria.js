@@ -1,3 +1,4 @@
+// models/categoria.js
 const Sequelize = require("sequelize");
 const connection = require("../database/appContext");
 
@@ -18,6 +19,13 @@ const Categoria = connection.define("categoria", {
     },
 });
 
-
+// Adding association with alias
+Categoria.associate = (models) => {
+    Categoria.hasMany(models.Libro, { 
+        foreignKey: "categoriaId", 
+        onDelete: 'CASCADE',
+        as: 'libros', // Alias for this association
+    });
+}
 
 module.exports = Categoria;

@@ -1,56 +1,64 @@
-<div class ="card">
-
+<div class="card">
   <div class="card-body">
-
     <h1 class="text-white">{{pageTitle}}</h1>
 
-<div class="row">
-  <form action="/" method="get" class="col-12 col-sm-5 col-md-4"> 
-    <div class="input-group"> 
-      <input type="text" name="search" placeholder="Buscar libro" class="form-control" />
-      <button type="submit" class="btn btn-general">
-        <i class="bi bi-search"></i> Buscar
-        </button>
+    <div class="row">
+      <!-- Search Form -->
+      <form action="/" method="get" class="col-12 col-sm-5 col-md-4">
+        <div class="input-group">
+          <input type="text" name="search" placeholder="Buscar libro" class="form-control" />
+          <button type="submit" class="btn btn-general">
+            <i class="bi bi-search"></i> Buscar
+          </button>
+        </div>
+      </form>
+
+      <!-- Filter Form with Select2 for categories -->
+      <form action="/" method="get" class="col-12 col-sm-10 col-md-8">
+        <div class="input-group">
+          <select name="categoria[]" class="form-control js-example-basic-multiple" multiple="multiple">
+            <option value="" disabled></option>
+            {{#each categorias}}
+              <option value="{{this.nombre}}">{{this.nombre}}</option>
+            {{/each}}
+          </select>
+
+          <button type="submit" class="btn btn-general ms-2">
+            <i class="bi bi-funnel"></i> Filtrar
+          </button>
+        </div>
+      </form>
     </div>
-  </form>
-
-  
- <form action="/" method="get" class="col-12 col-sm-10 col-md-8"> 
-  <div class="input-group">
-    <select name="categoria" class="form-control">
-      <option selected value="">Todos las categorias</option>
-      {{#each categorias}}
-        <option value="{{this.nombre}}">{{this.nombre}}</option> 
-      {{/each}}
-    </select>
-    
-    <button type="submit" class="btn btn-general ms-2">
-      <i class="bi bi-funnel"></i> Filtrar
-      </button>
   </div>
-</form>
-
-
-
-</div>
-</div>
 </div>
 
 <div class="row">
   {{#each libros}}
-    <div class="col-6 col-sm-4 col-md-2"> 
+    <div class="col-6 col-sm-4 col-md-2">
       <div class="card mb-3">
         <img src="{{this.imagePath}}" class="card-img-top img-size" alt="{{this.titulo}}" />
         <div class="card-body">
           <h5 class="card-title text-white text-center">{{this.titulo}}</h5>
-          <h6 class="card-subtitle mb-2 text-white text-center">Región: {{this.fechaPublicacion}}</h6>
-          <h6 class="card-subtitle mb-2 text-white text-center">Región: {{this.categoria.nombre}}</h6> 
-          <h6 class="card-subtitle mb-2 text-white text-center">Tipo: {{this.autor.nombre}}</h6>  
+          <h6 class="card-subtitle mb-2 text-white text-center">Publicado: {{this.fechaPublicacion}}</h6>
+          <h6 class="card-subtitle mb-2 text-white text-center">Categoria: {{this.categoria.nombre}}</h6>
+          <h6 class="card-subtitle mb-2 text-white text-center">Autor: {{this.autor.nombre}}</h6>
           <h6 class="card-subtitle mb-2 text-white text-center">Editorial: {{this.editorial.nombre}}</h6>
-          <a href="/libros/{{this.id}}" class="btn btn-info w-100">Detalles</a>
+          <div class="btn-group d-flex justify-content-center">
+            <a href="/libros/{{this.id}}" class="btn btn-general">
+              <i class="bi bi-info-circle"></i> Detalles
+            </a>
+          </div>
         </div>
       </div>
-    </div>  
+    </div>
   {{/each}}
 </div>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="../../assets/js/select2.js"></script>
+
 

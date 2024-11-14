@@ -22,7 +22,7 @@
         <div class="card-body d-flex flex-column justify-content-between">
           <h4 class="card-title text-white text-center">{{this.nombre}}</h4>
           <h6 class="card-subtitle mb-2 text-white text-center">Correo: {{this.correo}}</h6>
-          <h6 class="card-subtitle mb-2 text-white text-center">Libros: {{this.libros.length}}</h6> 
+          <h6 class="card-subtitle mb-2 text-white text-center">Libros: {{this.librosCount}}</h6> 
 
           <div class="mt-2 d-flex justify-content-center">
             <form method="post" action="/autores/delete/{{this.id}}" class="form-delete d-inline me-2">

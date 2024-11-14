@@ -1,12 +1,20 @@
 const editorial = require("../models/editorial");
-
+const libro = require("../models/libro");
 exports.editoriales = async (req, res) => {
     try {
-        const editoriales = await editorial.findAll();
+        const editoriales = await editorial.findAll({
+            include: {
+                model: libro,
+                as: 'libros'
+            }
+        });
 
         res.render("editoriales/editoriales", { 
             pageTitle: "Lista de Editoriales", 
-            editoriales: editoriales.map(e => e.dataValues)
+            editoriales: editoriales.map(e => ({
+                ...e.dataValues,
+                librosCount: e.libros ? e.libros.length : 0
+            }))
         });
 
     } catch (error) {

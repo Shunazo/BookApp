@@ -1,3 +1,4 @@
+
 const Sequelize = require("sequelize");
 const connection = require("../database/appContext");
 
@@ -18,6 +19,13 @@ const Autor = connection.define("autor", {
     },
 });
 
-
+// Adding association with alias
+Autor.associate = (models) => {
+    Autor.hasMany(models.Libro, { 
+        foreignKey: "autorId", 
+        onDelete: 'CASCADE',
+        as: 'libros', // Alias for this association
+    });
+}
 
 module.exports = Autor;
