@@ -2,18 +2,18 @@
     <div class="col-12 col-sm-6 offset-sm-3">
         <div class="card">
             <div class="card-body">
-                <h1 class="text-info text-center">{{pageTitle}}</h1>
+                <h1 class="text-white text-center">{{pageTitle}}</h1>
                 <br>
                 <form method="POST" action="/editoriales/create" novalidate>
                    
                     <div class="mb-3">
-                        <label for="nombre" class="form-label text-muted">Nombre de la Editorial</label>
-                        <input type="text" class="form-control text-info" id="nombre" name="nombre" required />
+                        <label for="nombre" class="form-label text-white">Nombre de la Editorial</label>
+                        <input type="text" class="form-control text-dark" id="nombre" name="nombre" required />
                     </div>
 
                     <div class="mb-3">
-                        <label for="telefono" class="form-label text-muted">Telefono</label>
-                        <input type="tel" class="form-control text-info" id="telefono" name="telefono"
+                        <label for="telefono" class="form-label text-white">Telefono</label>
+                        <input type="tel" class="form-control text-dark" id="telefono" name="telefono"
                             value="{{editorial.telefono}}" required 
                             maxlength="12" pattern="\d{3}-\d{3}-\d{4}" 
                             title="Phone number format: 000-000-0000" 
@@ -22,14 +22,14 @@
                         </div>
 
                     <div class="mb-3">
-                        <label for="pais" class="form-label text-muted">Pais</label>
-                        <input type="text" class="form-control text-info" id="pais" name="pais" required />
+                        <label for="pais" class="form-label text-white">Pais</label>
+                        <input type="text" class="form-control text-dark" id="pais" name="pais" required />
                     </div>
 
         
-                    <button type="submit" class="btn btn-info float-end" onclick="confirmCreateOrEdit(this, event)">
+                    <button type="submit" class="btn btn-general float-end" onclick="confirmCreateOrEdit(this, event)">
                         <i class="bi bi-check"></i> Guardar</button>
-                    <a href="/editoriales" class="btn btn-secondary float-end me-2">
+                    <a href="/editoriales" class="btn btn-general2 float-end me-2">
                         <i class="bi bi-x"></i>Volver a la lista</a>
                 </form>
             </div>

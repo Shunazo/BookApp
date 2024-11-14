@@ -2,14 +2,13 @@
 
   <div class="card-body">
 
-    <h1 class="text-white ">{{pageTitle}}</h1>
+    <h1 class="text-white">{{pageTitle}}</h1>
 
 <div class="row">
- 
   <form action="/" method="get" class="col-12 col-sm-5 col-md-4"> 
     <div class="input-group"> 
       <input type="text" name="search" placeholder="Buscar libro" class="form-control" />
-      <button type="submit" class="btn btn-info">
+      <button type="submit" class="btn btn-general">
         <i class="bi bi-search"></i> Buscar
         </button>
     </div>
@@ -25,7 +24,7 @@
       {{/each}}
     </select>
     
-    <button type="submit" class="btn btn-info ms-2">
+    <button type="submit" class="btn btn-general ms-2">
       <i class="bi bi-funnel"></i> Filtrar
       </button>
   </div>
@@ -43,11 +42,11 @@
       <div class="card mb-3">
         <img src="{{this.imagePath}}" class="card-img-top img-size" alt="{{this.titulo}}" />
         <div class="card-body">
-          <h5 class="card-title text-muted text-center">{{this.titulo}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted text-center">Región: {{this.fechaPublicacion}}</h6>
-          <h6 class="card-subtitle mb-2 text-muted text-center">Región: {{this.categoria.nombre}}</h6> 
-          <h6 class="card-subtitle mb-2 text-muted text-center">Tipo: {{this.autor.nombre}}</h6>  
-          <h6 class="card-subtitle mb-2 text-muted text-center">Editorial: {{this.editorial.nombre}}</h6>
+          <h5 class="card-title text-white text-center">{{this.titulo}}</h5>
+          <h6 class="card-subtitle mb-2 text-white text-center">Región: {{this.fechaPublicacion}}</h6>
+          <h6 class="card-subtitle mb-2 text-white text-center">Región: {{this.categoria.nombre}}</h6> 
+          <h6 class="card-subtitle mb-2 text-white text-center">Tipo: {{this.autor.nombre}}</h6>  
+          <h6 class="card-subtitle mb-2 text-white text-center">Editorial: {{this.editorial.nombre}}</h6>
           <a href="/libros/{{this.id}}" class="btn btn-info w-100">Detalles</a>
         </div>
       </div>

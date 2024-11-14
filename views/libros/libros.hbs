@@ -7,7 +7,7 @@
 
     <div class="row mt-2 mb-2">
       <div class="col-12 col-sm-4">
-        <a href="/libros/create" class="btn btn-info">
+        <a href="/libros/create" class="btn btn-general">
           <i class="bi bi-plus-circle"></i> Agregar Libro
         </a>
       </div>
@@ -21,18 +21,18 @@
       <div class="card">
         <img src="{{this.imagePath}}" class="card-img-top img-size" alt="{{this.titulo}}" />
         <div class="card-body d-flex flex-column ">
-          <h5 class="card-title text-muted text-center">{{this.titulo}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted text-center">Publicado: {{this.fechaPublicacion}}</h6>
-          <h6 class="card-subtitle mb-2 text-muted text-center">Categoría: {{this.categoria.nombre}}</h6>
-          <h6 class="card-subtitle mb-2 text-muted text-center">Autor: {{this.autor.nombre}}</h6>
-          <h6 class="card-subtitle mb-2 text-muted text-center">Editorial: {{this.editorial.nombre}}</h6>
+          <h5 class="card-title text-white text-center">{{this.titulo}}</h5>
+          <h6 class="card-subtitle mb-2 text-white text-center">Publicado: {{this.fechaPublicacion}}</h6>
+          <h6 class="card-subtitle mb-2 text-white text-center">Categoría: {{this.categoria.nombre}}</h6>
+          <h6 class="card-subtitle mb-2 text-white text-center">Autor: {{this.autor.nombre}}</h6>
+          <h6 class="card-subtitle mb-2 text-white text-center">Editorial: {{this.editorial.nombre}}</h6>
 
           <div class="mt-2 d-flex justify-content-center"> 
             <form method="post" action="/libros/delete/{{this.id}}" class="form-delete d-inline me-2">
-              <button type="button" class="btn btn-secondary delete-pokemon" onclick="confirmDelete(this)">
+              <button type="button" class="btn btn-general2 delete-pokemon" onclick="confirmDelete(this)">
               <i class="bi bi-trash"></i> Eliminar</button>
             </form>
-            <a href="/libros/edit/{{this.id}}" class="btn btn-info">
+            <a href="/libros/edit/{{this.id}}" class="btn btn-general">
             <i class="bi bi-pencil-square"></i> Editar</a>
           </div>
 

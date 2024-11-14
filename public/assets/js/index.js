@@ -51,8 +51,7 @@ function confirmDelete(button) {
   
     let entityType = '';
     let actionUrl = form.action;
-    let entityName = form.querySelector("input[name='nombre']") ? form.querySelector("input[name='nombre']").value : form.querySelector("input[name='titulo']").value;
-  
+    
     if (actionUrl.includes("/libros/edit") || actionUrl.includes("/categorias/edit") || actionUrl.includes("/autores/edit") || actionUrl.includes("/editoriales/edit")) {
         entityType = actionUrl.includes("/libros") ? 'Libro' : actionUrl.includes("/categorias") ? 'Categoría' : actionUrl.includes("/autores") ? 'Autor' : 'Editorial';
     } else if (actionUrl.includes("/libros/create") || actionUrl.includes("/categorias/create") || actionUrl.includes("/autores/create") || actionUrl.includes("/editoriales/create")) {

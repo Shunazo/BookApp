@@ -7,7 +7,7 @@
 
     <div class="row mt-2 mb-2">
       <div class="col-12 col-sm-4">
-        <a href="/editoriales/create" class="btn btn-info">
+        <a href="/editoriales/create" class="btn btn-general">
           <i class="bi bi-plus-circle"></i> Crear Editorial
         </a>
       </div>
@@ -20,18 +20,18 @@
     <div class="col-12 col-sm-6 col-md-4 d-flex"> 
       <div class="card"> 
         <div class="card-body d-flex flex-column justify-content-between">
-          <h4 class="card-title text-muted text-center">{{this.nombre}}</h4>
-          <h6 class="card-text text-center">Telefono: {{this.telefono}}</h6>
-          <h6 class="card-text text-center">Pais: {{this.pais}}</h6>
-          <h6 class="card-text text-center">Libros: {{this.libros.length}}</h6> 
+          <h4 class="card-title text-white text-center">{{this.nombre}}</h4>
+          <h6 class="card-subtitle mb-2 text-white text-center">Telefono: {{this.telefono}}</h6>
+          <h6 class="card-subtitle mb-2 text-white text-center">Pais: {{this.pais}}</h6>
+          <h6 class="card-subtitle mb-2 text-white text-center">Libros: {{this.libros.length}}</h6> 
 
           <div class="mt-2 d-flex justify-content-center">
             <form method="post" action="/editoriales/delete/{{this.id}}" class="form-delete d-inline me-2">
-              <button type="button" class="btn btn-secondary delete-author px-1" onclick="confirmDelete(this)">
+              <button type="button" class="btn btn-general2 delete-author px-1" onclick="confirmDelete(this)">
                 <i class="bi bi-trash"></i> Eliminar
               </button>
             </form>
-            <a href="/editoriales/edit/{{this.id}}" class="btn btn-info px-1"> 
+            <a href="/editoriales/edit/{{this.id}}" class="btn btn-general px-1"> 
               <i class="bi bi-pencil-square"></i> Editar
             </a>
           </div>

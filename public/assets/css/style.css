@@ -6,14 +6,15 @@ html, body {
 body {
     min-height: 100%;
     background-image: url("https://i.imgur.com/iDXVUj2.png");
-    background-size : auto;
+    background-size : cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    
 }
 
 .card {
-    background-color: rgba(255, 255, 255, 0.192);
+    background-color: rgba(66, 19, 39, 0.4);
     height: auto;
   width: 100%;
   margin: 10px;
@@ -31,3 +32,43 @@ body {
     border-color: red;
     border-width: medium;
 }
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    background-color : rgba(66, 19, 39, 0.4);
+  }
+
+  main.container {
+    padding-top: 70px; 
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+
+ .footer-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color : rgba(66, 19, 39, 0.4);
+  }
+
+  .btn-general{
+      background-color :#f56d9a
+  }
+
+  .btn-general2{
+    background-color :#fabad6
+  }
+
+  .btn-general:hover{
+      background-color :#f56d9a
+  }
+
+  .btn-general2:hover{
+    background-color :#fabad6
+  }

@@ -8,17 +8,17 @@
                 <form method="POST" action="/categorias/edit/{{categoria.id}}" novalidate>
                     <div class="mb-3">
                         <label for="nombre" class="form-label text-white">Nombre de la Categoría</label>
-                        <input type="text" class="form-control text-info" id="nombre" name="nombre" value="{{categoria.nombre}}" required />
+                        <input type="text" class="form-control text-dark" id="nombre" name="nombre" value="{{categoria.nombre}}" required />
                     </div>
         
                     <div class="mb-3">
                         <label for="descripcion" class="form-label text-white">Descripcion</label>
-                        <input type="textarea" class="form-control text-info" id="descripcion" name="descripcion" value="{{categoria.descripcion}}" required />
+                        <input type="textarea" class="form-control text-dark" id="descripcion" name="descripcion" value="{{categoria.descripcion}}" required />
                     </div>
         
-                    <button type="submit" class="btn btn-info float-end" onclick="confirmCreateOrEdit(this, event)">
+                    <button type="submit" class="btn btn-general float-end" onclick="confirmCreateOrEdit(this, event)">
                         <i class="bi bi-check"></i> Guardar</button>
-                    <a href="/categorias" class="btn btn-secondary float-end me-2">
+                    <a href="/categorias" class="btn btn-general2 float-end me-2">
                         <i class="bi bi-x"></i> Volver a la lista</a>
                 </form>
             </div>
