@@ -81,20 +81,40 @@ function confirmDelete(button) {
   }
   
   function validarCampos(form) {
-    const inputs = form.querySelectorAll('input[required], select[required]'); // Only select required fields
+    const inputs = form.querySelectorAll('input[required], select[required]');
     let esValido = true;
-  
-    inputs.forEach(input => {
-        if (input.value.trim() === '') {
-            input.classList.add('input-error');
-            input.classList.remove('input-success');
-            esValido = false;
+
+    for (const input of inputs) {
+        if (input.id === 'correo') {
+            // Validate the Gmail address
+            const gmailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+            if (!gmailPattern.test(input.value.trim())) {
+                input.classList.add('input-error');
+                input.classList.remove('input-success');
+                esValido = false;
+                Swal.fire({
+                    title: 'Correo inválido',
+                    text: 'Por favor, use una dirección de correo de Gmail.',
+                    icon: 'error',
+                    confirmButtonText: 'OK'
+                });
+                return false; 
+            } else {
+                input.classList.add('input-success');
+                input.classList.remove('input-error');
+            }
         } else {
-            input.classList.add('input-success');
-            input.classList.remove('input-error');
+            if (input.value.trim() === '') {
+                input.classList.add('input-error');
+                input.classList.remove('input-success');
+                esValido = false;
+            } else {
+                input.classList.add('input-success');
+                input.classList.remove('input-error');
+            }
         }
-    });
-  
+    }
+
     if (!esValido) {
         Swal.fire({
             title: 'Campos incompletos',
@@ -103,9 +123,11 @@ function confirmDelete(button) {
             confirmButtonText: 'OK'
         });
     }
-  
+
     return esValido;
 }
+
+
 
   
 

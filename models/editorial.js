@@ -23,12 +23,12 @@ const Editorial = connection.define("editorial", {
     },
 });
 
-// Adding association with alias
+
 Editorial.associate = (models) => {
     Editorial.hasMany(models.Libro, { 
         foreignKey: "editorialId", 
         onDelete: 'CASCADE',
-        as: 'libros', // Alias for this association
+        as: 'libros', 
     });
 }
 

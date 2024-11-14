@@ -19,12 +19,12 @@ const Categoria = connection.define("categoria", {
     },
 });
 
-// Adding association with alias
+
 Categoria.associate = (models) => {
     Categoria.hasMany(models.Libro, { 
         foreignKey: "categoriaId", 
         onDelete: 'CASCADE',
-        as: 'libros', // Alias for this association
+        as: 'libros', 
     });
 }
 

@@ -13,7 +13,10 @@
 
                     <div class="mb-3">
                         <label for="correo" class="form-label text-white">Correo</label>
-                        <input type="email" class="form-control text-dark" id="correo" name="correo" required />
+                        <input type="email" class="form-control text-dark" id="correo" name="correo" 
+                        placeholder="Recuerde usar Gmail solamente." 
+                        pattern="[a-zA-Z0-9._%+-]+@gmail\.com" 
+                        required />
                     </div>
         
                     <button type="submit" class="btn btn-general float-end" onclick="confirmCreateOrEdit(this, event)">

@@ -3,11 +3,9 @@ const Autor = require("../models/autor");
 const Categoria = require("../models/categoria");
 const Editorial = require("../models/editorial");
 const transporter = require("../services/EmailService");
-const { categorias } = require("./categoriaController");
 
 exports.libros = async (req, res) => {
     try {
-        // Fetching libros along with their associated models
         const libros = await Libro.findAll({
             include: [
                 { model: Autor, as: 'autor' },
@@ -143,14 +141,13 @@ exports.editForm = async (req, res) => {
         });
          
 
-        // Render the edit form and pass the current image path
         res.render("libros/libros-edit", { 
             pageTitle: "Editar Libro", 
             libro: libroRecord.dataValues, 
             autores: autores.map(a => a.dataValues),
             categorias: categorias.map(c => c.dataValues),
             editoriales: editoriales.map(e => e.dataValues),
-            currentImage: libroRecord.imagePath // Pass the current image path
+            currentImage: libroRecord.imagePath
         });
 
     } catch (error) {
@@ -185,7 +182,7 @@ exports.edit = async (req, res) => {
                     to: autor.correo,
                     subject: `Libro actualizado: ${titulo}`,
                     html: `<p>Hola ${autor.nombre},</p>
-                           <p>El libro titulado "<strong>${titulo}</strong>" ha sido actualizado con éxito.</p>`
+                           <p>El libro titulado "<strong>${titulo}</strong>" se le ha asignado o fue actualizado con éxito.</p>`
                 },
                 (err) => {
                     if (err) console.log("Error al enviar el email:", err);
@@ -232,7 +229,6 @@ exports.librodetail = async (req, res) => {
             return res.render("404", { pageTitle: "Libro no encontrado." });
         }
 
-        // Access data values, including associations
         const libroData = {
             ...libroRecord.dataValues,
             autor: libroRecord.autor ? libroRecord.autor.dataValues : null,
